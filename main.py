@@ -8,14 +8,9 @@ from tensorflow.keras.applications.resnet50 import ResNet50
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 
-# Инициализация бота
 bot = telebot.TeleBot('Api-key')
-
-# Загрузка предобученной модели ResNet50
 model = ResNet50(weights='imagenet')
 
-
-# Обработчик фотографий
 @bot.message_handler(content_types=['photo'])
 def handle_photo(message):
     # Получение фотографии из сообщения
@@ -25,7 +20,6 @@ def handle_photo(message):
     response = requests.get(file_url)
     img = Image.open(BytesIO(response.content)).convert('RGB')
 
-    # Предобработка изображения
     img = img.resize((224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
@@ -40,9 +34,6 @@ def handle_photo(message):
     for pred in decoded_preds:
         message_text += f'{pred[1]} с вероятностью {pred[2]:.2%}\n'
 
-    # Отправка сообщения с результатами классификации
     bot.reply_to(message, message_text)
 
-
-# Запуск бота
 bot.polling()
