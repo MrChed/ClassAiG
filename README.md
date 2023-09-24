@@ -9,6 +9,10 @@ ClassAiG - это бот для Telegram, который использует м
 ```
 pip install tensorflow numpy Pillow python-telegram-bot
 ```
+## Работоспособность
+
+![Снимок экрана 2023-09-24](https://github.com/MrChed/ClassAiG/assets/141160614/65235ca0-6f89-4f13-9990-5e674e4719c6)
+
 ## Скриншоты
 
 ![Снимок экрана 2023-09-24](https://github.com/MrChed/ClassAiG/assets/141160614/f31368e6-1b9c-4453-bda6-bad9c75e3f23)  
